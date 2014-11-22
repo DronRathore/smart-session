@@ -79,6 +79,15 @@ C'mon, the name reads the whole, remove a session variable
 Satan = Initialise->Satan()
 Satan->KillTheSession()
 ```
+####Scaling
+```javascript
+var config = {
+    "redis": {
+        // That Old Monk Details
+    },
+    clientLimit: someIntegerValueThatDefinesYourScaling //Wooh! That's too long
+}
+```
 ##ToDos
  - Add a hashing algo
  - Redis authentication(a bit lazy will do in few weeks)
