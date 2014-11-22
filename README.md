@@ -5,7 +5,7 @@ An ExpressJS Middleware which manages your Session Hassle with a horizontal scal
 
 ##How to use
 
-```
+```javascript
 var express = require("express")
 var session = require("smart-session");
 var app = express();
@@ -36,7 +36,7 @@ app.get("/winkCat/:catName", function(request, response){
 }
 ```
 Well that was just an old fashioned way, isn't it? Lets be smart!
-```
+```javascript
 var express = require("express")
 var session = require("smart-session");
 var app = express();
