@@ -1,6 +1,8 @@
 smart-session
 =============
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/DronRathore/smart-session?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 An ExpressJS Middleware which manages your Session Hassle with a horizontal scaling factor.
 
 ##How to use
