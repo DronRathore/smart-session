@@ -1,12 +1,17 @@
-var cacheMan	= require("cacheMan");
+var cacheMan	= require("./cacheMan");
 var Cookies		= require("cookies");
+var crypto		= require("crypto");
 var session = module.exports = function(config){
-	var getSecret = function(length){
-	    var text = "";
-    	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-	    for( var i=0; i < length; i++ )
-    	    text += possible.charAt(Math.floor(Math.random() * possible.length));
-	    return text;
+	var map = "abcdABCDEklmnopMNOPQR12345.STUVWXYZefghijFGHIJKLqrstuvwxyz06789_";
+	var getSecret = function(randomBits){
+		var length = map.length;
+		var keyName = "";
+		while(randomBits/length>0){
+			keyName += map[randomBits%length];
+			randomBits = Math.floor(randomBits/length);
+		}
+		keyName += map[randomBits];
+		return keyName;
 	}
 	if (config.redis){
 		var ip		= config.redis.ip?config.redis.ip:"127.0.0.1";
@@ -14,7 +19,6 @@ var session = module.exports = function(config){
 		var db		= config.redis.db?config.redis.db:undefined;
 	}
 	var cName	= config.session&&config.session.cookieName?config.session.cookieName:"_apocalypse";
-	var secret	= config.session&&config.session.secret?config.session.secret:getSecret(40); //todo: Hashing
 	var cacheBoy = new cacheMan(config);
 	return function(request, response, next){
 		var cookies = new Cookies(request, response);
@@ -74,7 +78,7 @@ var session = module.exports = function(config){
 			/*
 				Generate a Session ID
 			*/
-			request.session.id	= getSecret(Math.floor(Math.random() * 40)|40);
+			request.session.id	= crypto.randomBytes(25).toString('base64').replace(/\/|\+|\=/g, "")+"-"+crypto.randomBytes(25).toString('base64').replace(/\/|\+|\=/g, "") + "_" + getSecret(Math.floor(Math.random(20)*20));
 			cookies.set(cName, request.session.id, {httpOnly:true, expires: {toUTCString:function(){return "";}}});
 			next();
 		}

@@ -2,32 +2,25 @@
   "name": "smart-session",
   "description": "Node.js session handling middleware",
   "version": "0.0.1",
-  "contributors": [
-    {
-      "name": "Dron Rathore",
-      "email": "dron.rathore@gmail.com"
-    }
-  ],
-  "license": "MIT",
+  "author": "Dron Rathore <dron.rathore@gmail.com>",
+  "main" : "./index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dronrathore/smart-session"
+    "url": "git@github.com:dronrathore/smart-session"
   },
   "dependencies": {
-    "cookies": "latest",
-    "redis": "latest"
+    "cookie-parser": "*",
+    "redis": "*"
   },
-  "files": [
-    "node_modules/",
-    "LICENSE",
-    "index.js"
-  ],
+  "devDependencies": {
+    "cookies-parser": "*",
+    "redis": "*"
+  },
   "engines": {
     "node": ">= 0.8"
   },
   "bugs": {
     "url": "https://github.com/dronrathore/smart-session/issues"
   },
-  "homepage": "https://github.com/dronrathore/smart-session",
+  "homepage": "https://github.com/dronrathore/smart-session"
 }
-
