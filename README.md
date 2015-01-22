@@ -4,6 +4,7 @@ smart-session
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/DronRathore/smart-session?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 An ExpressJS Middleware which manages your Session Hassle with a horizontal scaling factor.
+Node-Redis uses queue to execute your query so I decided to create multiple clients to redis in case you are developing a Super high End Web Product.
 
 ##How to use
 
@@ -66,8 +67,9 @@ app.get("/winkCat/:catName", function(request, response){
       });
     }
 }
+// Add this as the last middleware and just stay cool!
 app.use(function(req, res, next){
-  request.session.update(); // Add this and just stay cool!
+  request.session.update();
   next();
 });
 ```
@@ -87,12 +89,11 @@ Satan->KillTheSession()
 ```javascript
 var config = {
     "redis": {
-        // That Old Monk Details
+        // Redis details
     },
     clientLimit: someIntegerValueThatDefinesYourScaling //Wooh! That's too long
 }
 ```
 ##ToDos
- - Add a hashing algo
  - Redis authentication(a bit lazy will do in few weeks)
  - More Fun!
