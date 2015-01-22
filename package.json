@@ -1,7 +1,7 @@
 {
   "name": "smart-session",
   "description": "Node.js session handling middleware",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Dron Rathore <dron.rathore@gmail.com>",
   "main": "./index.js",
   "repository": {
@@ -9,11 +9,11 @@
     "url": "git@github.com:dronrathore/smart-session"
   },
   "dependencies": {
-    "cookie-parser": "*",
+    "cookies": "*",
     "redis": "*"
   },
   "devDependencies": {
-    "cookies-parser": "*",
+    "cookies": "*",
     "redis": "*"
   },
   "engines": {
