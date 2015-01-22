@@ -34,7 +34,7 @@ app.get("/winkCat/:catName", function(request, response){
         "message" : "You ain't shit!"
       });
     }
-  request.session.release(); //donot forget to do this at the end of each request to achieve scaling! 
+  request.session.update(); //donot forget to do this at the end of each request to achieve scaling! 
 }
 ```
 Well that was just an old fashioned way, isn't it? Lets be smart!
@@ -65,9 +65,11 @@ app.get("/winkCat/:catName", function(request, response){
         "message" : "You ain't shit!"
       });
     }
-  request.session.update(); // do it in one go!
-  request.session.release(); //donot forget to do this at the end of each request to achieve scaling! 
 }
+app.use(function(req, res, next){
+  request.session.update(); // Add this and just stay cool!
+  next();
+});
 ```
 ##Methods
 ####request.session.add(key, value)
