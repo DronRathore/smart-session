@@ -61,9 +61,9 @@ var session = module.exports = function(config){
 		request.session.release = function(){
 			this.___redis.release(this.___redis.__id);
 		}
-		if (request.cookies[cName]){
-			request.session.id = request.cookies[cName];
-			redis.get(request.cookies[cName], function(error, data){
+		if (cookies.get(cName)){
+			request.session.id = cookies.get(cName);
+			redis.get(request.session.id, function(error, data){
 				if (error){
 					request.session = undefined;
 					next(error);
