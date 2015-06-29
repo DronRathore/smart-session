@@ -1,7 +1,7 @@
 {
   "name": "smart-session",
   "description": "Node.js session handling middleware",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Dron Rathore <dron.rathore@gmail.com>",
   "main": "./index.js",
   "repository": {
