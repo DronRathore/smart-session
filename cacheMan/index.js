@@ -17,8 +17,8 @@ cacheMan.prototype.getClient = function() {
 		return this.lowBound();
 	} else {
 		this.connections = ++this.connections;
-		var client = redis.createClient();
-		client.select(this.options.db||1);
+		var client = redis.createClient(this.options.redis);
+		client.select(this.options.redis.db||1);
 		this.currentConnections.bits[this.currentConnections.bits.length] = 1;
 		client.__id = this.currentConnections.bits.length-1;
 		var self = this;
